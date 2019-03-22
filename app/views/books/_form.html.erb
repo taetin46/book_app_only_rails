@@ -1,0 +1,16 @@
+<%= form_with model: book, local: true do |f| %>
+  <table>
+    <thead>
+      <th>title</th>
+      <th>category</th>
+      <th>author</th>
+      <th></th>
+    </thead>
+    <tbody>
+      <td><%= f.text_field :title %></td>
+      <td><%= f.text_field :category %></td>
+      <td><%= f.text_field :author %></td>
+      <td><%= f.submit %></td>
+    </tbody>
+  </table>
+<% end %>

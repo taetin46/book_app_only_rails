@@ -1,0 +1,26 @@
+<h1>book index</h1>
+
+<%= link_to('new', new_book_path)%>
+
+<table>
+  <thead>
+    <th>title</th>
+    <th>category</th>
+    <th>author</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </thead>
+  <tbody>
+    <% @books.each do |b| %>
+      <tr>
+        <td><%= b.title %></td>
+        <td><%= b.category %></td>
+        <td><%= b.author %></td>
+        <td><%= link_to('show', book_path(b.id)) %></td>
+        <td><%= link_to('edit', edit_book_path(b.id)) %></td>
+        <td><%= link_to('destroy', book_path(b.id), method: :delete) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
