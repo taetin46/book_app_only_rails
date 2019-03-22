@@ -1,18 +1,12 @@
 class BooksController < ApplicationController
+  before_action :find_resource, only: [:show, :edit, :destroy, :update]
+
   def index
     @books = Book.all
   end
 
-  def show
-    @book = Book.find(book_show_params)
-  end
-
   def new
     @book = Book.new
-  end
-
-  def edit
-    @book = Book.find(book_show_params)
   end
 
   def create
@@ -22,16 +16,17 @@ class BooksController < ApplicationController
   end
 
   def update
-    book = Book.find(book_show_params)
-    book.update(book_params)
+    @book.update(book_params)
     redirect_to books_path
   end
 
   def destroy
-    book = Book.find(book_show_params)
-    book.destroy
+    @book.destroy
     redirect_to books_path
   end
+
+  def show; end
+  def edit; end
 
   private
 
@@ -41,5 +36,9 @@ class BooksController < ApplicationController
 
     def book_params
       params.require(:book).permit(:title, :author, :category)
+    end
+
+    def find_resource
+      @book = Book.find(book_show_params)
     end
 end
