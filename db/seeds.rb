@@ -5,3 +5,5 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+%w(hoge fuga piyo).each_with_index{|t, i| Book.create(title: t, category: i, author: "#{t}太郎さん")}
