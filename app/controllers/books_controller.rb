@@ -1,6 +1,13 @@
 class BooksController < ApplicationController
   def index
     @books = Book.all
+    hako = Hako.new(array_hash)
+    puts "hakoだよーーーーー"
+    puts @hoge
+    puts hako.inspect
+    puts "attr_hogeだよーーーーー"
+    puts hako.ko
+    puts "koだよーーーーー"
   end
 
   def show
@@ -41,5 +48,23 @@ class BooksController < ApplicationController
 
     def book_params
       params.require(:book).permit(:title, :author, :category)
+    end
+
+    def array_hash
+      [
+        { 
+          'id': 1,
+          'many': [
+            {
+              'many_id': 10,
+              'name': 'many_1'
+            },
+            {
+              'many_id': 20,
+              'name': 'many_2'
+            }
+          ]
+        }
+      ]
     end
 end
